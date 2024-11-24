@@ -36,19 +36,6 @@ CMD ["/assisted-image-service"]
 
 LABEL com.redhat.component="multicluster-engine-assisted-image-service-container" \
       name="multicluster-engine/assisted-image-service-rhel9" \
-      version="${CI_CONTAINER_VERSION}" \
-      upstream-ref="${CI_ASSISTED_IMAGE_SERVICE_UPSTREAM_COMMIT}" \
-      upstream-url="${CI_ASSISTED_IMAGE_SERVICE_UPSTREAM_URL}" \
-      summary="OpenShift Assisted Image Service" \
-      io.k8s.display-name="OpenShift Assisted Image Service" \
-      maintainer="David Zager <dzager@redhat.com>" \
-      description="OpenShift Assisted Image Service" \
-      upstream_commit="${CI_ASSISTED_IMAGE_SERVICE_UPSTREAM_COMMIT}" \
-      org.label-schema.vcs-ref="${CI_ASSISTED_IMAGE_SERVICE_UPSTREAM_COMMIT}" \
-      org.label-schema.vcs-url="${CI_ASSISTED_IMAGE_SERVICE_UPSTREAM_URL}"
-
-LABEL com.redhat.component="multicluster-engine-assisted-image-service-container" \
-      name="multicluster-engine/assisted-image-service-rhel9" \
       version="${version}" \
       upstream-ref="${version}" \
       upstream-url="https://github.com/openshift/assisted-image-service" \
