@@ -18,7 +18,7 @@ WORKDIR /app
 RUN GO111MODULE=on GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -tags strictfipsruntime -o assisted-image-service main.go
 
 
-FROM --platform=$BUILDPLATFORM registry.access.redhat.com/ubi9/ubi-minimal:9.4
+FROM --platform=$BUILDPLATFORM registry.access.redhat.com/ubi9/ubi:9.4
 ARG release=main
 ARG version=latest
 
@@ -27,9 +27,7 @@ RUN mkdir $DATA_DIR && chmod 775 $DATA_DIR
 VOLUME $DATA_DIR
 ENV DATA_DIR=$DATA_DIR
 
-RUN microdnf -y update && microdnf clean all
-
-RUN microdnf install -y cpio squashfs-tools && microdnf clean all
+RUN subscription-manager refresh && dnf -y update && dnf install -y cpio squashfs-tools && dnf clean all
 
 COPY --from=builder /app/assisted-image-service /assisted-image-service
 CMD ["/assisted-image-service"]
